@@ -4,6 +4,7 @@ module.exports = {
   getByTrainerId,
   getByCustomerId,
   getByWorkoutId,
+  addSession,
   deleteWorkoutSession
 };
 
@@ -17,6 +18,10 @@ function getByCustomerId(id) {
 
 function getByWorkoutId(id) {
   return db("workout_session").where({ id });
+}
+
+function addSession(session) {
+  return db("workout_session").insert(session);
 }
 
 function deleteWorkoutSession(id) {
