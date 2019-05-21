@@ -1,6 +1,6 @@
 const db = require("./db/db");
 
-module.exports = { findByEmail, addUser, updateUser, deleteUser };
+module.exports = { findByEmail, addUser, updateUser, deleteUser, findUserById };
 
 function findByEmail(email) {
   return db("users").where({ email });
@@ -20,4 +20,8 @@ function deleteUser(id) {
   return db("users")
     .where({ id })
     .del();
+}
+
+function findUserById(id) {
+  return db("users").where({ id });
 }
