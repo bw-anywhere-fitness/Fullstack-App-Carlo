@@ -31,21 +31,26 @@ router.get("/workout/:id", async (req, res) => {
   return res.json({ data: response });
 });
 //add a session!
-router.post("/",async(req,res) => {
-    const response = await session_helper.addSession(req.body);
-    if(!response){
-        return res.json({message: "Problem inserting the session probably missing fields!"})
-    }
-    res.json({message:"Successful insert please do a get request again to get updated data"})
-})
+router.post("/", async (req, res) => {
+  const response = await session_helper.addSession(req.body);
+  if (!response) {
+    return res.json({
+      message: "Problem inserting the session probably missing fields!"
+    });
+  }
+  res.json({
+    message:
+      "Successful insert please do a get request again to get updated data"
+  });
+});
 
 //delete by ID
-router.delete("/:id", (req, res) => {
-    const response = await session_helper.deleteWorkoutSession(req.params.id);
-    if(!response){
-        return res.status(500).json({message:"Delete was not a success"})
-    }
-    res.json({message: "Successfully Deleted!"})
+router.delete("/:id", async (req, res) => {
+  const response = await session_helper.deleteWorkoutSession(req.params.id);
+  if (!response) {
+    return res.status(500).json({ message: "Delete was not a success" });
+  }
+  res.json({ message: "Successfully Deleted!" });
 });
 
 module.exports = router;
